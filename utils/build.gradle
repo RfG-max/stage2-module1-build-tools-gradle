@@ -1,22 +1,26 @@
 plugins {
-    // id for library
-    // id for maven to publish jar to local repository
+    id 'java'// id for library
+    id 'maven-publish'// id for maven to publish jar to local repository
 }
 
 java {
-// provide sourceCompatibility
+    sourceCompatibility = '1.8' // provide sourceCompatibility
 }
 
 repositories {
-// provide repository, where required dependencies are located
+    mavenCentral() // provide repository, where required dependencies are located
+}
+
+dependencies {
+    implementation 'org.apache.commons:commons-lang3:3.10' // Add Apache Commons Lang dependency
 }
 
 publishing {
     publications {
         maven(MavenPublication) {
-// provide groupId
-// provide artifactId
-// provide version
+            groupId = 'com.example'// provide groupId
+            artifactId = 'utils'// provide artifactId
+            version = '1.3.5'// provide version
 
             from components.java
         }
@@ -27,7 +31,10 @@ publishing {
 
 jar {
     manifest {
-        //provide manifest with such attributes as 'Implementation-Title', 'Implementation-Version'
+        attributes(
+        'Implementation-Title': 'Utils Library',//provide manifest with such attributes as 'Implementation-Title', 'Implementation-Version'
+        'Implementation-Version': 'version'
+        )
     }
 }
 
