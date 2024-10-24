@@ -6,10 +6,10 @@ public class StringUtils {
             return false;
         }
         try {
-            Integer.parseInt(str);
-            return true;
+            if(Double.parseDouble(str)>0) return true;
         } catch (NumberFormatException e) {
             return false;
         }
+        return false;
     }
 }
