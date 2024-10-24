@@ -2,9 +2,14 @@ package com.epam.utils;
 
 public class StringUtils {
     public static boolean isPositiveNumber(String str) {
-        if (Integer.parseInt(str) > 0) {
-            return true;
+        if (str == null) {
+            return false;
         }
-        return false;
+        try {
+            Integer.parseInt(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 }
